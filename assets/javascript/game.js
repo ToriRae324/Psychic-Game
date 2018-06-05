@@ -7,21 +7,21 @@ var losses = 0;
 var guessesLeft = 9;
 var guesses = [];
 
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
 
 // Functions
 function resetGuesses() {
     guessesLeft = 9;
     guesses = [];
+    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 };
 
 
-
 // Main Program
-document.onkeyup = function(event) {
+document.onkeydown = function(event) {
 
     var letter = event.key.toLowerCase();
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     
     guesses.push(letter);
     guessesLeft --;
@@ -39,10 +39,12 @@ document.onkeyup = function(event) {
     }
 
     var html =
-        "<p>Wins: " + wins + "</p>" +
-        "<p>Losses: " + losses + "</p>" +
-        "<p>Guesses Left: " + guessesLeft + "</p>" +
-        "<p>Guesses so far: " + guesses + "</p>";
+        "<h4>Guesses Left: " + guessesLeft + "</h4>" + "<br>" +
+        "<h3>Guesses so far: " + "<br>" + guesses + "</h3>"+ "<hr>" +
+        "<h4>Wins: " + wins + "</h4>" +
+        "<h5>Losses: " + losses + "</h5>";
+
+    
 
     document.querySelector("#game").innerHTML = html;
 };
